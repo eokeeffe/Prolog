@@ -1,0 +1,11 @@
+nonStopTrain(sandiego,oceanside).
+nonStopTrain(lasvegas,sandiego).
+nonStopTrain(sanfrancisco,bakersfield).
+nonStopTrain(bakersfield,sandiego).
+nonStopTrain(oceanside,losangeles).
+nonStopTrain(portland,sanfrancisco).
+nonStopTrain(seattle,portland).
+
+canTravel(Src,Dest):-nonStopTrain(Src,Dest).
+canTravel(Src,Dest):-(nonStopTrain(Src,A),canTravel(A,Dest))
+; (nonStopTrain(Dest,B),canTravel(Dest,Src)).
